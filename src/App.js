@@ -6,10 +6,9 @@ import { useState } from 'react';
 import Alert from './components/Alert';
 import About from './components/About';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
-  Route,
-  Link,
+  Route
 } from "react-router-dom";
 function App() {
   const [mode, setMode]= useState('light');
@@ -42,13 +41,13 @@ function App() {
        setMode ('dark')
        document.body.style.backgroundColor= '#042743';
        showAlert('Dark Mode has been Enabled',"success")
-       document.title = "Textutils - Dark mode"
+      //  document.title = "Textutils - Dark mode"
     }
     else{
       setMode ('light')
       document.body.style.backgroundColor= 'white';
       showAlert('light Mode has been Enabled',"success")
-      document.title = "Textutils - Light Mode"
+      // document.title = "Textutils - Light Mode"
     }
   }
   return (
@@ -59,12 +58,8 @@ function App() {
    {/* <Navbar/> */}
    <div className="container my-3">
    <Routes>
-          <Route path="/AboutUs" element = {<About/>}>
-           
-          </Route>
-          <Route path="/" element= { <Form showAlert={showAlert} heading = "Enter The Text to Analyze" mode={mode}/>}>
-           
-          </Route>
+          <Route path="/AboutUs"  element = {<About mode={mode}/> }/>
+          <Route path="/" element= { <Form showAlert={showAlert} heading = " Try Textutils- Word Counter, Character Counter, Remove Extra Spaces" mode={mode}/>}/>
       </Routes>
    </div>
    </Router>
